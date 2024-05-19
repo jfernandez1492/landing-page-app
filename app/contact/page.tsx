@@ -1,10 +1,10 @@
 import React from "react";
+import { Contact } from "../../components";
 
 const ContactPage = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1> Contact page </h1>
-      <a href="/">Home</a>
+    <main className="flex h-full flex-col items-center justify-between md:p-24 p-10">
+      <Contact />
     </main>
   );
 };

@@ -3,18 +3,25 @@ import React from "react";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import * as Separator from "@radix-ui/react-separator";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { pathBuilder } from "../helpers";
 
-const NavigationItem = (label: string, href: string = "/") => (
-  <NavigationMenu.Item className="min-w-28 text-center gap-2">
-    <NavigationMenu.Link
-      className="text-white hover:text-tomato8 focus:shadow-white block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none"
-      href={pathBuilder(href)}
-    >
-      {label}
-    </NavigationMenu.Link>
-  </NavigationMenu.Item>
-);
+const NavigationItem = (label: string, href: string = "/") => {
+  const pathname = usePathname();
+  const active = pathname === href ? "text-tomato8" : "text-white";
+  console.log(pathname, href, active);
+
+  return (
+    <NavigationMenu.Item className="min-w-28 text-center gap-2">
+      <NavigationMenu.Link
+        className={`${active} hover:text-tomato8 focus:shadow-white block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none`}
+        href={pathBuilder(href)}
+      >
+        {label}
+      </NavigationMenu.Link>
+    </NavigationMenu.Item>
+  );
+};
 
 const NavigationSpacer = (direction: "start" | "end") => (
   <div
@@ -57,14 +64,19 @@ export const NavBar = () => {
 };
 
 export const ProfessionalNavBar = () => {
+  const pathname = usePathname();
+
   return (
     <NavigationMenu.Root className="relative z-[1] flex w-screen justify-between h-16 items-center px-4">
-      <Link href="/">
+      <Link href="/" className="none md:block">
         <img
-          src={pathBuilder("/ceotechlogo.png")}
+          src={
+            pathname === "/"
+              ? pathBuilder("/ceotechlogo.png")
+              : pathBuilder("/CEOTECH/EDITED/ceotech.logo.white.svg")
+          }
           alt="Logo"
-          width={50}
-          height={50}
+          width={pathname === "/" ? 50 : 250}
         />
       </Link>
       <NavigationMenu.List className="center m-0 flex list-none rounded-[6px] bg-transparent p-1">

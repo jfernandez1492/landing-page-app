@@ -2,7 +2,7 @@ import React from "react";
 
 const ProjectsPage = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex h-full flex-col items-center justify-between md:p-24 p-10">
       <h1> Projects page </h1>
       <a href="/">Home</a>
     </main>
