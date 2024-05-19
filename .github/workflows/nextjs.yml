@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      NEXT_PUBLIC_BASE_PATH: https://jfernandez1492.github.io/landing-page-app/
+      NEXT_PUBLIC_BASE_PATH: https://jfernandez1492.github.io/landing-page-app
 
     steps:
       - name: Checkout
