@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import React from "react";
-import { NavBar, ProfessionalNavBar } from "../components/header.component";
+import { ProfessionalNavBar } from "../components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +19,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className + " bg-slate-800 min-h-screen"}>
-        {/* <NavBar /> */}
         <ProfessionalNavBar />
         {children}
       </body>

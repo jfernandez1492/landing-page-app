@@ -3,12 +3,13 @@ import React from "react";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import * as Separator from "@radix-ui/react-separator";
 import Link from "next/link";
+import { pathBuilder } from "../helpers";
 
 const NavigationItem = (label: string, href: string = "/") => (
   <NavigationMenu.Item className="min-w-28 text-center gap-2">
     <NavigationMenu.Link
       className="text-white hover:text-tomato8 focus:shadow-white block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none"
-      href={href}
+      href={pathBuilder(href)}
     >
       {label}
     </NavigationMenu.Link>
@@ -59,7 +60,12 @@ export const ProfessionalNavBar = () => {
   return (
     <NavigationMenu.Root className="relative z-[1] flex w-screen justify-between h-16 items-center px-4">
       <Link href="/">
-        <img src="/ceotechlogo.png" alt="Logo" width={50} height={50} />
+        <img
+          src={pathBuilder("/ceotechlogo.png")}
+          alt="Logo"
+          width={50}
+          height={50}
+        />
       </Link>
       <NavigationMenu.List className="center m-0 flex list-none rounded-[6px] bg-transparent p-1">
         {NavigationItem("Home")}
