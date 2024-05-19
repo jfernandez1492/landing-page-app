@@ -2,10 +2,10 @@ import React from "react";
 
 const ProjectsPage = () => {
   return (
-    <main className="flex h-full flex-col items-center justify-between md:p-24 p-10">
+    <div className="flex flex-col justify-center items-center">
       <h1> Projects page </h1>
       <a href="/">Home</a>
-    </main>
+    </div>
   );
 };
 

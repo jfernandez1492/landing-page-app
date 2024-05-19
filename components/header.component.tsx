@@ -9,7 +9,6 @@ import { pathBuilder } from "../helpers";
 const NavigationItem = (label: string, href: string = "/") => {
   const pathname = usePathname();
   const active = pathname === href ? "text-tomato8" : "text-white";
-  console.log(pathname, href, active);
 
   return (
     <NavigationMenu.Item className="min-w-28 text-center gap-2">
@@ -67,7 +66,7 @@ export const ProfessionalNavBar = () => {
   const pathname = usePathname();
 
   return (
-    <NavigationMenu.Root className="relative z-[1] flex w-screen justify-between h-16 items-center px-4">
+    <NavigationMenu.Root className="relative z-[1] flex w-screen justify-center md:justify-between h-16 items-center md:px-4">
       <Link href="/" className="hidden md:block">
         <img
           src={

@@ -2,24 +2,30 @@
 import React from "react";
 import * as Form from "@radix-ui/react-form";
 import { pathBuilder } from "../helpers";
+import { SocialNetwork } from "./social.component";
 
 export const Contact = () => {
   return (
-    <div className="w-full flex flex-row justify-center items-center md:gap-24">
-      <img
-        src={pathBuilder("/CEOTECH/GENERATED/Designer-25.jpeg")}
-        alt="logo"
-        className="w-[450px] rounded-[50%] md:block hidden"
-      />
-      <div className="w-full flex justify-center md:px-8">
+    <div className="flex flex-col md:gap-10 items-center md:pt-8 w-full">
+      <p className="text-xs md:text-lg text-center max-w-[840px] md:bg-slate-400 md:bg-opacity-15 p-8 md:p-4 rounded-3xl">
+        Estamos aquí para servirte y brindarte la mejor asistencia posible. Por
+        favor, tómate un momento para completar este formulario y déjanos saber
+        cómo podemos ayudarte.
+      </p>
+      <div className="block md:flex justify-center items-center md:gap-24 w-screen md:w-full px-6">
         <ContactForm />
+        <img
+          src={pathBuilder("/CEOTECH/GENERATED/Designer-25.jpeg")}
+          alt="logo"
+          className="w-[450px] rounded-full md:block hidden"
+        />
       </div>
     </div>
   );
 };
 
 const ContactForm = () => (
-  <Form.Root className="w-full flex flex-col md:gap-5">
+  <Form.Root className="flex flex-col md:gap-5 md:max-w-[680px] ">
     <Form.Field className="grid mb-[10px]" name="email">
       <div className="flex items-baseline justify-between">
         <Form.Label className="text-[15px] font-medium leading-[35px] text-white">
@@ -81,17 +87,18 @@ const ContactForm = () => (
       <Form.Control asChild>
         <textarea
           className="leading-7 box-border w-full bg-mauve3 shadow-blackA6 inline-flex appearance-none items-center justify-center rounded-[4px] p-[10px] text-[15px] text-black shadow-[0_0_0_1px] outline-none hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black] selection:color-white selection:bg-blackA6 resize-none"
-          rows={5}
+          rows={3}
           required
         />
       </Form.Control>
     </Form.Field>
-    <div className="w-full flex justify-center items-center">
+    <div className="w-full flex flex-col justify-center items-center gap-4">
       <Form.Submit asChild>
         <button className="box-border w-full text-white shadow-blackA4 hover:bg-white hover:text-tomato9 inline-flex h-[35px] md:max-w-48 items-center justify-center rounded-[4px] bg-tomato9 px-[15px] font-medium leading-none shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none mt-[10px]">
           Enviar
         </button>
       </Form.Submit>
+      <SocialNetwork />
     </div>
   </Form.Root>
 );
