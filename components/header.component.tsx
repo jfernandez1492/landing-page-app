@@ -68,7 +68,7 @@ export const ProfessionalNavBar = () => {
 
   return (
     <NavigationMenu.Root className="relative z-[1] flex w-screen justify-between h-16 items-center px-4">
-      <Link href="/" className="none md:block">
+      <Link href="/" className="hidden md:block">
         <img
           src={
             pathname === "/"

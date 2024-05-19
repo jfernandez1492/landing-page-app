@@ -86,12 +86,7 @@ const ContactForm = () => (
         />
       </Form.Control>
     </Form.Field>
-    <div className="flex justify-between md:flex-row flex-col">
-      <Form.Submit asChild>
-        <button className="box-border w-full text-white shadow-blackA4 hover:bg-white hover:text-tomato inline-flex h-[35px] md:max-w-48 items-center justify-center rounded-[4px] bg-tomato9 px-[15px] font-medium leading-none shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none mt-[10px]">
-          Reset
-        </button>
-      </Form.Submit>
+    <div className="w-full flex justify-center items-center">
       <Form.Submit asChild>
         <button className="box-border w-full text-white shadow-blackA4 hover:bg-white hover:text-tomato9 inline-flex h-[35px] md:max-w-48 items-center justify-center rounded-[4px] bg-tomato9 px-[15px] font-medium leading-none shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none mt-[10px]">
           Enviar
