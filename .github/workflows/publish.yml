@@ -25,6 +25,12 @@ jobs:
       NODEMAILER_PASS: ${{ secrets.NODEMAILER_PASS }}
 
     steps:
+      - name: Read variables
+        run: echo "NEXT_PUBLIC_BASE_PATH - ${{ env.NEXT_PUBLIC_BASE_PATH }}"
+
+      - name: Read secrets
+        run: echo "NODEMAILER_HOST - ${{ env.NODEMAILER_HOST }}"
+
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
