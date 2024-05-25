@@ -11,7 +11,7 @@ import { TooltipComment } from "@/components/tooltip.component";
 export const SocialNetwork = () => {
   return (
     <NavigationMenu className="fixed bottom-4">
-      <NavigationMenuList className="gap-10">
+      <NavigationMenuList className="gap-6">
         <NavigationMenuItem className="m-1">
           <TooltipComment content="Encuéntranos en Facebook" side="left">
             <NavigationMenuLink href="https://www.facebook.com/ceotechmx">

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { pathBuilder } from "@/helpers";
 
 export const MainView = () => (
-  <div className="w-full h-screen flex flex-col items-center">
+  <section className="w-full md:h-screen flex flex-col justify-center items-center bg-gradient-to-b from-slate-800 to-blackA12">
     <div className="w-full flex flex-col md:flex-row animate-scale-in-slowly items-center justify-center p-8">
       <Image
         src={pathBuilder("/ceotechlogo.png")}
@@ -30,11 +30,11 @@ export const MainView = () => (
         eficiente y rentable
       </h1>
       <Separator className="bg-white bg-opacity-60 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px my-8" />
-      <Link href={pathBuilder("/contact")}>
+      <Link href={"#projects"}>
         <Button className="text-xl uppercase box-border text-white shadow-blackA4 hover:bg-white hover:text-tomato9 inline-flex w-56 h-16 items-center justify-center rounded-full bg-tomato9 px-[15px] font-medium leading-none shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none mt-[10px]">
           Conócenos
         </Button>
       </Link>
     </div>
-  </div>
+  </section>
 );

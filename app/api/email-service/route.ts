@@ -22,7 +22,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       from: email,
       to: contactEmail,
       subject: "Contact Request",
-      html: contactUsRequestTemplate(name, message),
+      html: contactUsRequestTemplate(name, email, message),
     });
 
     await sendEmail({

@@ -1,15 +1,8 @@
 import type { Config } from "tailwindcss";
 import type { PluginAPI } from "tailwindcss/types/config";
 
-const plugin = require("tailwindcss/plugin");
-const {
-  blackA,
-  mauve,
-  violet,
-  indigo,
-  purple,
-  tomato,
-} = require("@radix-ui/colors");
+import plugin from "tailwindcss/plugin";
+import { blackA, indigo, tomato } from "@radix-ui/colors";
 
 const config = {
   darkMode: ["class"],
@@ -26,9 +19,6 @@ const config = {
     extend: {
       colors: {
         ...blackA,
-        ...mauve,
-        ...violet,
-        ...purple,
         ...indigo,
         ...tomato,
         border: "hsl(var(--border))",
@@ -111,6 +101,16 @@ const config = {
           from: { opacity: "1" },
           to: { opacity: "0" },
         },
+        bounce: {
+          "0%, 100%": {
+            transform: "translateY(-25%)",
+            animationTimingFunction: "cubic-bezier(0.8,0,1,1)",
+          },
+          "50%": {
+            transform: "translateY(0)",
+            animationTimingFunction: "cubic-bezier(0,0,0.2,1)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -125,6 +125,7 @@ const config = {
         "enter-from-right": "enter-from-right 250ms ease",
         "exit-to-left": "exit-to-left 250ms ease",
         "exit-to-right": "exit-to-right 250ms ease",
+        bounce: "bounce 1s infinite",
       },
     },
   },

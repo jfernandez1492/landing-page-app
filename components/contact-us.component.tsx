@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { TooltipComment } from "@/components/tooltip.component";
-import { FaEnvelope } from "react-icons/fa6";
+import { FaEnvelope, FaPaperPlane } from "react-icons/fa6";
 
 export const ContactUsDialog = () => {
   const [loading, setLoading] = useState(false);
@@ -24,22 +24,23 @@ export const ContactUsDialog = () => {
   const [open, setOpen] = useState(false);
 
   const handleSubmit = async (event: MouseEvent) => {
+    console.log("submit");
     event.preventDefault();
     setLoading(true);
     try {
-      //   const response = await fetch("/api/email-service", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({ name, email, message }),
-      //   });
+      const response = await fetch("/api/email-service", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
 
-      //   const { success } = await response.json();
+      const { success } = await response.json();
 
-      //   if (!success) {
-      //     throw new Error("Failed to send email");
-      //   }
+      if (!success) {
+        throw new Error("Failed to send email");
+      }
 
       setName("");
       setEmail("");
@@ -114,7 +115,13 @@ export const ContactUsDialog = () => {
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit" onClick={handleSubmit} disabled={loading}>
+          <Button
+            type="submit"
+            className="text-white bg-tomato9 hover:text-tomato9 hover:bg-white hover:border-solid hover:outline hover:outline-tomato9"
+            onClick={handleSubmit}
+            disabled={loading}
+          >
+            <FaPaperPlane className="mr-2" />
             Enviar
           </Button>
         </DialogFooter>
