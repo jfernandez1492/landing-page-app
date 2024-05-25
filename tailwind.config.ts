@@ -1,6 +1,5 @@
 import type { Config } from "tailwindcss";
 import type { PluginAPI } from "tailwindcss/types/config";
-import { transform } from "typescript";
 
 const plugin = require("tailwindcss/plugin");
 const {
@@ -12,20 +11,19 @@ const {
   tomato,
 } = require("@radix-ui/colors");
 
-/** @type {import('tailwindcss').Config} */
-const config: Config = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+const config = {
+  darkMode: ["class"],
+  content: ["./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}"],
+  prefix: "",
   theme: {
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
       },
+    },
+    extend: {
       colors: {
         ...blackA,
         ...mauve,
@@ -33,62 +31,105 @@ const config: Config = {
         ...purple,
         ...indigo,
         ...tomato,
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        enterFromRight: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "enter-from-right": {
           from: { opacity: "0", transform: "translateX(200px)" },
           to: { opacity: "1", transform: "translateX(0)" },
         },
-        enterFromLeft: {
+        "enter-from-left": {
           from: { opacity: "0", transform: "translateX(-200px)" },
           to: { opacity: "1", transform: "translateX(0)" },
         },
-        exitToRight: {
+        "exit-to-right": {
           from: { opacity: "1", transform: "translateX(0)" },
           to: { opacity: "0", transform: "translateX(200px)" },
         },
-        exitToLeft: {
+        "exit-to-left": {
           from: { opacity: "1", transform: "translateX(0)" },
           to: { opacity: "0", transform: "translateX(-200px)" },
         },
-        scaleIn: {
+        "scale-in": {
           from: { opacity: "0", transform: "rotateX(-10deg) scale(0.9)" },
           to: { opacity: "1", transform: "rotateX(0deg) scale(1)" },
         },
-        scaleOut: {
+        "scale-out": {
           from: { opacity: "1", transform: "rotateX(0deg) scale(1)" },
           to: { opacity: "0", transform: "rotateX(-10deg) scale(0.95)" },
         },
-        fadeIn: {
+        "fade-in": {
           from: { opacity: "0" },
           to: { opacity: "1" },
         },
-        fadeOut: {
+        "fade-out": {
           from: { opacity: "1" },
           to: { opacity: "0" },
         },
-        ping: {
-          "75%, 100%": { transform: "scale(2)", opacity: "0" },
-        },
       },
-    },
-    animation: {
-      scaleIn: "scaleIn 200ms ease",
-      scaleInSlowly: "scaleIn 1.5s ease",
-      scaleOut: "scaleOut 200ms ease",
-      scaleOutSlowly: "scaleOut 2s ease",
-      fadeIn: "fadeIn 200ms ease",
-      fadeInSlowly: "fadeIn 3.5s ease",
-      fadeOut: "fadeOut 200ms ease",
-      fadeOutSlowly: "fadeOut 2s ease",
-      enterFromLeft: "enterFromLeft 250ms ease",
-      enterFromRight: "enterFromRight 250ms ease",
-      exitToLeft: "exitToLeft 250ms ease",
-      exitToRight: "exitToRight 250ms ease",
-      ping: "ping 1s cubic-bezier(0, 0, 0.2, 1) infinite",
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "scale-in": "scale-in 200ms ease",
+        "scale-in-slowly": "scale-in 2s ease",
+        "scale-out": "scale-out 200ms ease",
+        "fade-in": "fade-in 200ms ease",
+        "fade-in-slowly": "fade-in 2s ease",
+        "fade-out": "fade-out 200ms ease",
+        "enter-from-left": "enter-from-left 250ms ease",
+        "enter-from-right": "enter-from-right 250ms ease",
+        "exit-to-left": "exit-to-left 250ms ease",
+        "exit-to-right": "exit-to-right 250ms ease",
+      },
     },
   },
   plugins: [
+    require("tailwindcss-animate"),
     plugin(
       ({ matchUtilities }: { matchUtilities: PluginAPI["matchUtilities"] }) => {
         matchUtilities({
@@ -99,6 +140,6 @@ const config: Config = {
       }
     ),
   ],
-};
+} satisfies Config;
 
 export default config;
