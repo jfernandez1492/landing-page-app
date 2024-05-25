@@ -126,9 +126,9 @@ const generateHTML = (content: string): string => `
                 color: white;
             ">
                 © ${new Date().getFullYear()} — 
-                <a href=${
+                <a href="${
                   process.env.NEXT_PUBLIC_BASE_PATH
-                } style="margin: 1em 0; color: white; text-decoration: none;">
+                }" style="margin: 1em 0; color: white; text-decoration: none;">
                     CEOTECH
                 </a>
             </p>
