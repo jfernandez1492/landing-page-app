@@ -30,7 +30,11 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      NEXT_PUBLIC_BASE_PATH: https://jfernandez1492.github.io/landing-page-app
+      NEXT_PUBLIC_BASE_PATH: ${{ vars.NEXT_PUBLIC_BASE_PATH }}
+      NODEMAILER_HOST: ${{ secrets.NODEMAILER_HOST }}
+      NODEMAILER_PORT: ${{ secrets.NODEMAILER_PORT }}
+      NODEMAILER_USER: ${{ secrets.NODEMAILER_USER }}
+      NODEMAILER_PASS: ${{ secrets.NODEMAILER_PASS }}
 
     steps:
       - name: Checkout
