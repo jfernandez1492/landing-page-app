@@ -50,8 +50,8 @@ export const sendEmail = async (options: SendMailOptions): Promise<void> => {
 export const contactUsConfirmationTemplate = (
   name: string,
   message: string
-): string => {
-  const content = generateHTML(`
+): string =>
+  generateHTML(`
     <h3>¡Gracias por contactarnos, ${name}!</h3>
     <p>Hemos recibido tu mensaje:</p>
     <code style="color: black;">
@@ -62,24 +62,18 @@ export const contactUsConfirmationTemplate = (
     ${addSocials}
     `);
 
-  return escape(content);
-};
-
 export const contactUsRequestTemplate = (
   name: string,
   email: string,
   message: string
-): string => {
-  const content = generateHTML(`
+): string =>
+  generateHTML(`
     <h3>Se ha recibido un nuevo mensaje</h3>
     <code style="color: black;">
         <b>${name} (${email})</b>
         <p>${message}</p>
     </code>
   `);
-
-  return escape(content);
-};
 
 const generateHTML = (content: string): string => `
 <!DOCTYPE html>
