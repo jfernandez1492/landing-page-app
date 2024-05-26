@@ -15,6 +15,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { TooltipComment } from "@/components/tooltip.component";
 import { FaEnvelope, FaPaperPlane } from "react-icons/fa6";
+import { pathBuilder } from "@/helpers";
 
 export const ContactUsDialog = () => {
   const [loading, setLoading] = useState(false);
@@ -28,7 +29,7 @@ export const ContactUsDialog = () => {
     event.preventDefault();
     setLoading(true);
     try {
-      const response = await fetch("/api/email-service", {
+      const response = await fetch(pathBuilder("/api/email-service"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
