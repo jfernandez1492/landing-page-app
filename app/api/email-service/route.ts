@@ -20,13 +20,13 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
     await sendEmail({
       from: email,
-      to: `Contacto CEOTECH 🔧 <${contactEmail}>`,
+      to: `Contacto CEOTECH <${contactEmail}>`,
       subject: "Contact Request",
       html: contactUsRequestTemplate(name, email, message),
     });
 
     await sendEmail({
-      from: `Contacto CEOTECH 🔧 <${contactEmail}>`,
+      from: `Contacto CEOTECH <${contactEmail}>`,
       to: email,
       subject: "Message received",
       html: contactUsConfirmationTemplate(name, message),

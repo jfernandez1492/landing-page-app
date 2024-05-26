@@ -1,5 +1,6 @@
 import { createTransport } from "nodemailer";
 import type { Transporter, SendMailOptions } from "nodemailer";
+import { escape } from "querystring";
 
 const configTransporter = (): Transporter => {
   const port = parseInt(process.env.NODEMAILER_PORT as string, 10);
@@ -50,7 +51,7 @@ export const contactUsConfirmationTemplate = (
   name: string,
   message: string
 ): string => {
-  return generateHTML(`
+  const content = generateHTML(`
     <h3>¡Gracias por contactarnos, ${name}!</h3>
     <p>Hemos recibido tu mensaje:</p>
     <code style="color: black;">
@@ -60,6 +61,8 @@ export const contactUsConfirmationTemplate = (
     <span>Saludos cordiales,<br /> CEOTECH</span>
     ${addSocials}
     `);
+
+  return escape(content);
 };
 
 export const contactUsRequestTemplate = (
@@ -67,13 +70,15 @@ export const contactUsRequestTemplate = (
   email: string,
   message: string
 ): string => {
-  return generateHTML(`
+  const content = generateHTML(`
     <h3>Se ha recibido un nuevo mensaje</h3>
     <code style="color: black;">
         <b>${name} (${email})</b>
         <p>${message}</p>
     </code>
   `);
+
+  return escape(content);
 };
 
 const generateHTML = (content: string): string => `
